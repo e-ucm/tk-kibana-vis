@@ -1,0 +1,52 @@
+<div class="form-group">
+	<form>
+		<h4>Chart Colors</h4>
+
+		<div ng-show="$root.label_keys.length > 0">
+			<label for="sel3">{{$root.label_keys[0]}}</label>
+			<input type="color" name="sel3" id="sel3" ng-model="vis.params.color1" class="form-control">
+		</div>
+
+		<div ng-show="$root.label_keys.length > 1">
+			<label for="sel3">{{$root.label_keys[1]}}</label>
+			<input type="color" name="sel3" id="sel3" ng-model="vis.params.color2" class="form-control">
+		</div>
+
+		<div ng-show="$root.label_keys.length > 2">
+			<label for="sel3">{{$root.label_keys[2]}}</label>
+			<input type="color" name="sel3" id="sel3" ng-model="vis.params.color3" class="form-control">
+		</div>
+
+		<div ng-show="$root.label_keys.length > 3">
+			<label for="sel3">{{$root.label_keys[3]}}</label>
+			<input type="color" name="sel3" id="sel3" ng-model="vis.params.color4" class="form-control">
+		</div>
+
+		<div ng-show="$root.label_keys.length > 4">
+			<label for="sel3">{{$root.label_keys[4]}}</label>
+			<input type="color" name="sel3" id="sel3" ng-model="vis.params.color5" class="form-control">
+		</div>
+
+	</form>
+</div>
+
+<div class="form-group">
+
+	<form>
+		<h4>Others</h4>
+		<div clas="show-if-chart" ng-show="$root.show_chart">
+
+			<div class="form-group">
+				<label for="sel-legend">Choose legend position</label>
+				<select class="form-control" id="sel-legend" ng-model="vis.params.legend_position">
+					<option value="right">Right</option>
+					<option value="bottom">Bottom</option>
+				</select>
+			</div>
+
+		</div>
+	</form>
+</div>
+
+
+
