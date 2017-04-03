@@ -18,7 +18,7 @@ $ npm install
 
 Unistall:
 ```
-$ bin/kibana plugin  --remove tk-widget
+$ bin/kibana plugin  --remove tk-kibana-vis
 ```
 
 ### Contributions (Work in progress)
