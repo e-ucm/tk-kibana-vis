@@ -1,5 +1,5 @@
 {
-  "name": "e-ucm",
+  "name": "tk-kibana-vis",
   "description": "This is Kibana 5 plugin which uses the JavaScript to display Thomas Kilmann Classification visualization",
   "version": "5.0.0",
   "homepage": "https://github.com/e-ucm/tk-widget",

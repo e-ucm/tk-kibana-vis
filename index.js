@@ -3,7 +3,7 @@ export default function (kibana) {
 	return new kibana.Plugin({
 		uiExports: {
 			visTypes: [
-				'plugins/e-ucm/tk-widget-vis'
+				'plugins/tk-kibana-vis/tk-widget-vis'
       		]
     	}
   	});

@@ -1,9 +1,9 @@
-import 'plugins/e-ucm/tk-widget-vis.less';
-import 'plugins/e-ucm/tk-widget-controller';
+import 'plugins/tk-kibana-vis/tk-widget-vis.less';
+import 'plugins/tk-kibana-vis/tk-widget-controller';
 import TemplateVisTypeTemplateVisTypeProvider from 'ui/template_vis_type/template_vis_type';
 import VisSchemasProvider from 'ui/vis/schemas';
-import tKWidgetVisTemplate from 'plugins/e-ucm/tk-widget.html';
-import tKWidgetParamsTemplate from 'plugins/e-ucm/tk-widget-params.html';
+import tKWidgetVisTemplate from 'plugins/tk-kibana-vis/tk-widget.html';
+import tKWidgetParamsTemplate from 'plugins/tk-kibana-vis/tk-widget-params.html';
 
 // register the provider with the visTypes registry
 require('ui/registry/vis_types').register(tkWidgetVisProvider);
