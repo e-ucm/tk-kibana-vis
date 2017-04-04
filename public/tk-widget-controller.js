@@ -11,8 +11,8 @@ const module = uiModules.get('kibana/tk-widget-vis', ['kibana']);
 const tk = require('tk-widget');
 
 module.controller('TKWidgetVisController', function ($scope, $element, Private) {
-    var hold = "";
-    var wold = "";
+    var hold = 0;
+    var wold = 0;
     const tabifyAggResponse = Private(AggResponseTabifyTabifyProvider);
     var idchart = $element.children().find(".chartc3");
     var chart_labels = {};
@@ -30,16 +30,30 @@ module.controller('TKWidgetVisController', function ($scope, $element, Private) 
         $scope.chartGen();
     });
 
-
+    var data = {
+        avoiding: {
+            activated: false
+        },
+        competing: {
+            activated: false
+        },
+        accomodating: {
+            activated: false
+        },
+        compromising: {
+            activated: false
+        },
+        collaborating: {
+            activated: false
+        }
+    };
     // C3JS chart generator
-    $scope.chart = null;
     $scope.chartGen = function () {
 
         // change bool value
         $scope.$root.show_chart = true;
 
         // Generate and draw
-        var data = { };
         for (var i = 0; i < parsed_data.length; i++) {
             var esData = parsed_data[i];
             if (esData.length == 2) {
@@ -66,13 +80,36 @@ module.controller('TKWidgetVisController', function ($scope, $element, Private) 
             data[tkFinalKey].activated = true;
         }
 
-        $scope.chart = new tk.generate({'bindto': idchart[0], 'data': data});
+        if (!$scope.chart) {
+            $scope.chart = new tk.generate({'bindto': idchart[0], 'data': data});
+        } else {
+            $scope.chart.update(data);
+        }
 
         // resize
         var elem = $(idchart[0]).closest('div.visualize-chart');
-        var h = elem.height();
-        var w = elem.width();
-        $scope.chart.resize({height: h - 50, width: w - 50});
+        var h = elem.height() - 50;
+        var w = elem.width() - 50;
+
+        if (!h) {
+            h = 0;
+        }
+
+        if (!w) {
+            w = 0;
+        }
+
+        if (h < 50) {
+            h = 100;
+        }
+
+        if (w < 50) {
+            w = 200;
+        }
+
+        $(idchart[0]).css('max-height', '155px');
+        $(idchart[0]).css('height', '155px');
+        $scope.chart.resize({height: h, width: w});
 
     };
 
@@ -125,12 +162,30 @@ module.controller('TKWidgetVisController', function ($scope, $element, Private) 
     // Automatic resizing of graphics
     $scope.$watch(
         function () {
+            if (!$scope.chart) return;
+
             var elem = $(idchart[0]).closest('div.visualize-chart');
             var h = elem.height();
             var w = elem.width();
 
-            if (!$scope.chart) return;
+            if (!h) {
+                h = 0;
+            }
 
+            if (!w) {
+                w = 0;
+            }
+
+            if (h < 50) {
+                h = 150;
+            }
+
+            if (w < 50) {
+                w = 200;
+            }
+
+            $(idchart[0]).css('max-height', '155px');
+            $(idchart[0]).css('height', '155px');
             if (idchart.length > 0 && h > 0 && w > 0) {
 
                 if (hold != h || wold != w) {
@@ -138,7 +193,6 @@ module.controller('TKWidgetVisController', function ($scope, $element, Private) 
                     hold = elem.height();
                     wold = elem.width();
                 }
-
             }
         },
         true
