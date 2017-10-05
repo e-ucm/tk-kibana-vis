@@ -1,22 +1,25 @@
 import 'plugins/tk-kibana-vis/tk-widget-vis.less';
 import 'plugins/tk-kibana-vis/tk-widget-controller';
-import TemplateVisTypeTemplateVisTypeProvider from 'ui/template_vis_type/template_vis_type';
-import VisSchemasProvider from 'ui/vis/schemas';
+import { VisSchemasProvider } from 'ui/vis/schemas';
 import tKWidgetVisTemplate from 'plugins/tk-kibana-vis/tk-widget.html';
 import tKWidgetParamsTemplate from 'plugins/tk-kibana-vis/tk-widget-params.html';
-
+import { VisVisTypeProvider } from 'ui/vis/vis_type';
+import { TemplateVisTypeProvider } from 'ui/template_vis_type/template_vis_type';
+import { VisTypesRegistryProvider } from 'ui/registry/vis_types';
 // register the provider with the visTypes registry
-require('ui/registry/vis_types').register(tkWidgetVisProvider);
+VisTypesRegistryProvider.register(tkWidgetVisProvider);
 
 function tkWidgetVisProvider(Private) {
-    const TemplateVisType = Private(TemplateVisTypeTemplateVisTypeProvider);
+    const TemplateVisType = Private(TemplateVisTypeProvider);
     const Schemas = Private(VisSchemasProvider);
+    const VisType = Private(VisVisTypeProvider);
 
     return new TemplateVisType({
         name: 'tkWidget',
         title: 'Thomas Kilmann Classification widget',
         icon: 'fa-spinner',
         description: 'This is Kibana 5 plugin which uses the JavaScript to display Thomas Kilmann Classification visualization.',
+        category: VisType.CATEGORY.OTHER,
         template: tKWidgetVisTemplate,
         params: {
             defaults: {
@@ -51,4 +54,4 @@ function tkWidgetVisProvider(Private) {
 }
 
 // export the provider so that the visType can be required with Private()
-export default tkWidgetVisProvider;
+// export default tkWidgetVisProvider;
