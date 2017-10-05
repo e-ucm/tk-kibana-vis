@@ -1,8 +1,9 @@
 'use strict';
 
-import uiModules from 'ui/modules';
-import AggResponseTabifyTabifyProvider from 'ui/agg_response/tabify/tabify';
-import errors from 'ui/errors';
+//import uiModules from 'ui/modules';
+import { uiModules } from 'ui/modules';
+import { AggResponseTabifyProvider } from 'ui/agg_response/tabify/tabify';
+
 
 // get the kibana/tk-widget-vis module, and make sure that it requires the "kibana" module if it didn't already
 const module = uiModules.get('kibana/tk-widget-vis', ['kibana']);
@@ -13,7 +14,7 @@ const tk = require('tk-widget');
 module.controller('TKWidgetVisController', function ($scope, $element, Private) {
     var hold = 0;
     var wold = 0;
-    const tabifyAggResponse = Private(AggResponseTabifyTabifyProvider);
+    const tabifyAggResponse = Private(AggResponseTabifyProvider);
     var idchart = $element.children().find(".chartc3");
     var chart_labels = {};
     var parsed_data = [];
