@@ -7,7 +7,7 @@
 This is a plugin for Kibana5+. Has been developed and tested on Kibana 5.0.0.
 
 ### Usage
-Installation steps:
+Installation steps (manual):
 ```
 $ cd KIBANA_HOME/plugins
 $ git clone https://github.com/e-ucm/tk-kibana-vis.git tk-kibana-vis
@@ -15,6 +15,17 @@ $ cd tk-kibana-vis
 $ npm install
 ```
 > **Note:** If you can not see the plugin in the plugin list, or get kibana warning like "**Plugin "tk-widget" was disabled because it expected Kibana version "5.1.0", and found "5.0.0" please modify package.json file and put your kibana version.
+
+Through plugin installer
+```
+./bin/kibana-plugin install https://github.com/e-ucm/tk-kibana-vis/releases/download/5.0.0-1/tk-kibana-vis.zip
+```
+
+### Instalation on Kibana 5.6.2
+
+```
+./bin/kibana-plugin install https://github.com/e-ucm/tk-kibana-vis/releases/download/5.6.2/kibana.zip
+```
 
 Unistall:
 ```
